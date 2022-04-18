@@ -20,32 +20,26 @@ class Piece {
 function getInitialBoard() {
   let result = [] ;
   //WHITE PLAYERS ONLY!
-  result.push(new Piece(0, 0, "rook", WHITE_PLAYER))
-  result.push(new Piece(0, 1, "knight", WHITE_PLAYER))
-  result.push(new Piece(0, 6, "knight", WHITE_PLAYER))
-  result.push(new Piece(0, 4, "king", WHITE_PLAYER))
-  result.push(new Piece(0, 3, "queen", WHITE_PLAYER))
-  result.push(new Piece(0, 2, "bishop", WHITE_PLAYER))
-  result.push(new Piece(0, 5, "bishop", WHITE_PLAYER))
-  result.push(new Piece(0,7,"rook", WHITE_PLAYER))
-  for (let z=0;z<8;z++){
-    result.push(new Piece(1,[z], "pawn", WHITE_PLAYER))
-  }
-
-  //BLACK PLAYERS ONLY!
-  result.push(new Piece(7, 0, "rook", DARK_PLAYER))
-  result.push(new Piece(7, 1, "knight", DARK_PLAYER))
-  result.push(new Piece(7, 6, "knight", DARK_PLAYER))
-  result.push(new Piece(7, 2, "bishop", DARK_PLAYER))
-  result.push(new Piece(7, 4, "king", DARK_PLAYER))
-  result.push(new Piece(7, 3, "queen", DARK_PLAYER))
-  result.push(new Piece(7, 5, "bishop", DARK_PLAYER))
-  result.push(new Piece(7,7,"rook", DARK_PLAYER))
+  addPieces(result,0,WHITE_PLAYER);
+  addPieces(result,7,DARK_PLAYER)
+  
   for (let d=0;d<8;d++){
     result.push(new Piece(6,[d], "pawn", DARK_PLAYER))
+    result.push(new Piece(1,[d], "pawn", WHITE_PLAYER))
   }
 
   return result;
+}
+
+function addPieces(result,row,player) {
+  result.push(new Piece(row, 0, "rook", player));
+  result.push(new Piece(row, 1, "knight", player));
+  result.push(new Piece(row, 6, "knight", player));
+  result.push(new Piece(row, 4, "king", player));
+  result.push(new Piece(row, 3, "queen", player));
+  result.push(new Piece(row, 2, "bishop", player));
+  result.push(new Piece(row, 5, "bishop", player));
+  result.push(new Piece(row, 7, "rook", player));
 }
 
 function addImage(cell, player, name) {
@@ -84,7 +78,6 @@ if (selectedCell.id === "cell-0_0" || selectedCell.id=== "cell-0_7"){
       document.getElementById("cell-" + z + "_" + i).classList.add('selected');
     }
   }
-dfsaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 }
 }
 
