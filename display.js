@@ -63,12 +63,8 @@ if (selectedCell.id === "cell-0_0"){
    let allcol = document.getElementById("cell-" + i + "_0")
   allrow.classList.add('selected');
   allcol.classList.add('selected');
+  }}}
 
-  for(let z=0;z<8;z++){
-f
-    }
-  }
-}}
 
   
 //   //how the queens move!
