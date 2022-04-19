@@ -112,9 +112,9 @@ class Piece {
   getPawnRelativeMoves() {
     let result = [];
     if (this.player===DARK_PLAYER){
-      return [[-2,-1]]
+      return [[-1,0]]
     }else{
-    return[[2, 1]];
+    return[[1, 0]];
   }
   }
   
