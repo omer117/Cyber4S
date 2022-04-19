@@ -57,29 +57,29 @@ function onCellClick(event) {
   selectedCell = event.currentTarget;
   selectedCell.classList.add('selected');
 //how the white rooks move ! (not finished!!)
-if (selectedCell.id === "cell-0_0" || selectedCell.id=== "cell-0_7"){
+if (selectedCell.id === "cell-0_0"){
   for (let i = 0; i<8;i++){
    let allrow = document.getElementById("cell-0_"+i)
    let allcol = document.getElementById("cell-" + i + "_0")
-   if (selectedCell !== undefined) {
-    allrow.classList.remove('selected');
-    allcol.classList.remove('selected');
   allrow.classList.add('selected');
   allcol.classList.add('selected');
 
-  }}
-}
-
-  
-  //how the queens move!
-  if (selectedCell.id === "cell-0_4" || selectedCell.id === "cell-7_4"){
-    for(let i = 0; i<8;i++){
-      for(let z = 0;z<8;z++){
-      document.getElementById("cell-" + z + "_" + i).classList.add('selected');
+  for(let z=0;z<8;z++){
+f
     }
   }
-}
-}
+}}
+
+  
+//   //how the queens move!
+//   if (selectedCell.id === "cell-0_4" || selectedCell.id === "cell-7_4"){
+//     for(let i = 0; i<8;i++){
+//       for(let z = 0;z<8;z++){
+//       document.getElementById("cell-" + z + "_" + i).classList.add('selected');
+//     }
+//   }
+// }
+
 
 function createChessBoard() {
   const table1 = document.createElement('table');
