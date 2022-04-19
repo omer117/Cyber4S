@@ -1,0 +1,106 @@
+header {
+    font-family: 'Varela Round', sans-serif;
+    padding: 30px;
+    background-color: #ececec;
+}
+
+body {
+    font-family: 'Varela Round', sans-serif;
+    text-align: right !important;
+    direction: rtl;
+}
+
+.navbar {
+    display: block;
+}
+
+
+.headsearch{
+    width:400px ;
+    height: 40px;
+}
+.container {
+    margin: 70px;
+}
+.bbb{
+    color: black;
+        
+}
+.ye{
+    text-align: left;
+}
+
+.hardov{
+border: 2px solid;
+}
+
+
+#site-img {
+    width: 3.125em;
+    height: 3.125em;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 1.9em;
+    font-weight: bold;
+}
+
+h5 {
+    font-size: 1.5em;
+}
+
+p {
+    font-size: large;
+}
+
+.allscr {
+    width: 900px;
+}
+
+.interasting {
+    background-color: #f3f3f3;
+    border: 1px solid ;
+    ;
+}
+
+.the_interest {
+    width: 127px;
+    height: 164px;
+    border: 1px solid #a2a9b1;
+    background-color: #f8f9fa;
+    padding: 7;
+}
+
+.card {
+    width: 400px;
+}
+
+.third {
+    align-self: flex-end;
+}
+
+.mountainColor {
+    background-color: #E7DCC4;
+}
+
+.imagess {
+    width: 400px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+}
+
+.mrg {
+    margin: 50px 0 50px 0;
+}
+
+.sml-mrg{
+    margin:15px 0 15px 0;
+}
