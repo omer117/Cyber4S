@@ -148,8 +148,8 @@ function getInitialBoard() {
   addPieces(result, 7, DARK_PLAYER)
 
   for (let d = 0; d < 8; d++) {
-    result.push(new Piece(6, [d], PAWN, DARK_PLAYER))
-    result.push(new Piece(1, [d], PAWN, WHITE_PLAYER))
+    result.push(new Piece(6, d, PAWN, DARK_PLAYER))
+    result.push(new Piece(1, d, PAWN, WHITE_PLAYER))
   }
 
   return result;
