@@ -13,14 +13,6 @@ let selectedCell;
 let pieces = [];
 let table;
 
-// class BoardData{
-//   constructor(pieces)
-//   this.piece = piece
-// }
-
-// getPiece(){
-
-// }
 
 class Piece {
   constructor(row, col, type, player) {
@@ -150,7 +142,7 @@ class BoardData {
   }
 }
 
-function getInitialBoard() {
+function getInitialPieces() {
   let result = [];
   //WHITE PLAYERS ONLY!
   addPieces(result, 0, WHITE_PLAYER);
@@ -222,12 +214,15 @@ function createChessBoard() {
       }
       cell.addEventListener('click', (event) => onCellClick(event, row, col));
     }
-  }
-
-  pieces = getInitialBoard();
+  
+}
+  pieces = getInitialPieces();
   pieces[0].getPossibleMoves();
-  // console.log('pieces', pieces);
+  
 
+let boardData = new BoardData (getInitialPieces);
+
+  
   for (let piece of pieces) {
     addImage(table.rows[piece.row].cells[piece.col], piece.player, piece.type);
   }
