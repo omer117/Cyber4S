@@ -51,3 +51,7 @@ table {
 .selected{
     background-color: cornflowerblue;
 }
+
+.possible-move{
+    background-color: aquamarine;
+}
