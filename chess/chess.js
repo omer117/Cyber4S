@@ -1,23 +1,6 @@
 //from line 3 to 17, we have some variables,
 //that all of them will come in handy at the game 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 const BOARD_SIZE = 8;
 const WHITE_PLAYER = 'white-types';
 const BLACK_PLAYER = 'black-types';
