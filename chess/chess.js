@@ -74,6 +74,27 @@ class Piece {
     return filteredMoves;
   }
 
+  getMovesInDirection(directionRow, directionCol, boardData) {
+    let result = [];
+
+    for (let i = 1; i < BOARD_SIZE; i++) {
+      let row = this.row + directionRow * i;
+      let col = this.col + directionCol * i;
+      if (boardData.isEmpty(row, col)) {
+        result.push([row, col]);
+      } else if (boardData.isPlayer(row, col, this.getOpponent())) {
+        result.push([row, col]);
+        console.log("opponent");
+        return result;
+      } else if (boardData.isPlayer(row, col, this.player)) {
+        console.log("player");
+        return result;
+      }
+    }
+    console.log("all empty");
+    return result;
+  }
+
   getPawnMoves(boardData) {
     let result = [];
     let direction = 1;
@@ -97,29 +118,6 @@ class Piece {
     }
 
 
-    return result;
-  }
-
-
-
-  getMovesInDirection(directionRow, directionCol, boardData) {
-    let result = [];
-
-    for (let i = 1; i < BOARD_SIZE; i++) {
-      let row = this.row + directionRow * i;
-      let col = this.col + directionCol * i;
-      if (boardData.isEmpty(row, col)) {
-        result.push([row, col]);
-      } else if (boardData.isPlayer(row, col, this.getOpponent())) {
-        result.push([row, col]);
-        console.log("opponent");
-        return result;
-      } else if (boardData.isPlayer(row, col, this.player)) {
-        console.log("player");
-        return result;
-      }
-    }
-    console.log("all empty");
     return result;
   }
 
@@ -263,7 +261,7 @@ function showMovesForPiece(row, col) {
       table.rows[i].cells[j].classList.remove('selected');
     }
   }
- 
+
   const piece = boardData.getPiece(row, col);
   if (piece !== undefined) {
     let possibleMoves = piece.getPossibleMoves(boardData);
