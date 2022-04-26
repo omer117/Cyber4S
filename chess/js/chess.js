@@ -1,6 +1,3 @@
-//from line 3 to 17, we have some variables,
-//that all of them will come in handy at the game 
-
 const BOARD_SIZE = 8;
 const WHITE_PLAYER = 'white-types';
 const BLACK_PLAYER = 'black-types';
@@ -12,42 +9,15 @@ const BISHOP = 'bishop';
 const KING = 'king';
 const QUEEN = 'queen';
 
+const PIECES = [ROOK, KNIGHT, BISHOP, KING, QUEEN, BISHOP, KNIGHT, ROOK];
+
 const CHESS_BOARD_ID = 'chess-board';
 
-let selectedPiece;
-let boardData;
+let game;
 let table;
+let selectedPiece;
 
-
-
-
-function getInitialPieces() {
-  let result = [];
-
-  addFirstRowPieces(result, 0, WHITE_PLAYER);
-  addFirstRowPieces(result, 7, BLACK_PLAYER);
-
-  for (let i = 0; i < BOARD_SIZE; i++) {
-    result.push(new Piece(1, i, PAWN, WHITE_PLAYER));
-    result.push(new Piece(6, i, PAWN, BLACK_PLAYER));
-  }
-  return result;
-}
-
-function addFirstRowPieces(result, row, player) {
-  for (let i = 0; i < 8; i++) {
-    let PLAYERS = [ROOK, KNIGHT, BISHOP, KING, QUEEN, BISHOP, KNIGHT, ROOK]
-    result.push(new Piece(row, i, PLAYERS[i], player));
-  }
-}
-
-function addImage(cell, player, name) {
-  const image = document.createElement('img');
-  image.src = 'pngs/' + player + '/' + name + '.png';
-  cell.appendChild(image);
-}
-
-function showMovesForPiece(row, col) {
+function tryUpdateSelectedPiece(row, col) {
   // Clear all previous possible moves
   for (let i = 0; i < BOARD_SIZE; i++) {
     for (let j = 0; j < BOARD_SIZE; j++) {
@@ -56,9 +26,10 @@ function showMovesForPiece(row, col) {
     }
   }
 
-  const piece = boardData.getPiece(row, col);
+  // Show possible moves
+  const piece = game.boardData.getPiece(row, col);
   if (piece !== undefined) {
-    let possibleMoves = piece.getPossibleMoves(boardData);
+    let possibleMoves = game.getPossibleMoves(piece);
     for (let possibleMove of possibleMoves) {
       const cell = table.rows[possibleMove[0]].cells[possibleMove[1]];
       cell.classList.add('possible-move');
@@ -69,42 +40,23 @@ function showMovesForPiece(row, col) {
   selectedPiece = piece;
 }
 
-function onCellClick(event, row, col) {
-
-  if (selectedPiece === undefined) {
-    showMovesForPiece(row, col);
+function onCellClick(row, col) {
+  // selectedPiece - The current selected piece (selected in previous click)
+  // row, col - the currently clicked cell - it may be empty, or have a piece.
+  if (selectedPiece !== undefined && game.tryMove(selectedPiece, row, col)) {
+    selectedPiece = undefined;
+    // Recreate whole board - this is not efficient, but doesn't affect user experience
+    createChessBoard(game.boardData);
   } else {
-    // TODO: Refactor based on Yuval's suggestion
-    if (tryMove(selectedPiece, row, col)) {
-      selectedPiece = undefined;
-      createChessBoard(boardData);
-    } else {
-      showMovesForPiece(row, col);
-    }
+    tryUpdateSelectedPiece(row, col);
   }
 }
 
-
-function tryMove(piece, row, col) {
-  const possibleMoves = piece.getPossibleMoves(boardData);
-  // possibleMoves looks like this: [[1,2], [3,2]]
-  for (const possibleMove of possibleMoves) {
-    // possibleMove looks like this: [1,2]
-    if (possibleMove[0] === row && possibleMove[1] === col) {
-      // There is a legal move
-      boardData.removePiece(row, col);
-      piece.row = row;
-      piece.col = col;
-      return true;
-    }
-  }
-  return false;
-}
-
-function initGame() {
-  // Create list of pieces (32 total)
-  boardData = new BoardData(getInitialPieces());
-  createChessBoard(boardData);
+// Adds an image to cell with the piece's image
+function addImage(cell, player, name) {
+  const image = document.createElement('img');
+  image.src = 'pngs/' + player + '/' + name + '.png';
+  cell.appendChild(image);
 }
 
 function createChessBoard(boardData) {
@@ -126,7 +78,7 @@ function createChessBoard(boardData) {
       } else {
         cell.className = 'b';
       }
-      cell.addEventListener('click', (event) => onCellClick(event, row, col));
+      cell.addEventListener('click', () => onCellClick(row, col));
     }
   }
 
@@ -135,6 +87,11 @@ function createChessBoard(boardData) {
     const cell = table.rows[piece.row].cells[piece.col];
     addImage(cell, piece.player, piece.type);
   }
+}
+
+function initGame() {
+  game = new Game(WHITE_PLAYER);
+  createChessBoard(game.boardData);
 }
 
 window.addEventListener('load', initGame);
