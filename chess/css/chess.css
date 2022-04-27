@@ -1,4 +1,3 @@
-
 .container {
     margin: 100px 273.5px;
     background-color: #361500;
@@ -28,10 +27,11 @@
 
 table {
     position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    border-color: #e3cfae;
+    margin: auto;
+    padding: 30px;
+    background-color: #CE9461;
     border: solid 1px;
+    border-radius: 25px;
 
 }
 
@@ -43,7 +43,7 @@ table {
     background: white;
     padding: 50;
     border-radius: 10px;
-    width: max-content;    
+    width: max-content;
 }
 
 
