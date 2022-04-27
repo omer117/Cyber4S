@@ -1,6 +1,6 @@
 const BOARD_SIZE = 8;
-const WHITE_PLAYER = 'white-types';
-const BLACK_PLAYER = 'black-types';
+const WHITE_PLAYER = 'white';
+const BLACK_PLAYER = 'black';
 
 const PAWN = 'pawn';
 const ROOK = 'rook';
@@ -51,7 +51,7 @@ function onCellClick(row, col) {
 // Adds an image to cell with the piece's image
 function addImage(cell, player, name) {
   const image = document.createElement('img');
-  image.src = 'pngs/' + player + '/' + name + '.png';
+  image.src = 'piecesImages/' + player + '/' + name + '.png';
   image.draggable = false;
 
   cell.appendChild(image);
@@ -72,9 +72,9 @@ function createChessBoard(boardData) {
     for (let col = 0; col < BOARD_SIZE; col++) {
       const cell = rowElement.insertCell();
       if ((row + col) % 2 === 0) {
-        cell.className = 'l';
+        cell.className = 'lightCell';
       } else {
-        cell.className = 'b';
+        cell.className = 'blackCell';
       }
       cell.addEventListener('click', () => onCellClick(row, col));
     }
