@@ -17,14 +17,21 @@ class Game {
                 piece.col = col;
                 if (removedPiece !== undefined && removedPiece.type === KING) {
                     this.winner = piece.player;
+                    console.log(this.winner)
                 }
 
                 this.currentPlayer = piece.getOpponent();
+                console.log(removedPiece)
+
                 return true;
+
             }
+
         }
+
         return false;
     }
+
     getPossibleMoves(piece) {
         if (this.currentPlayer !== piece.player || this.winner !== undefined) {
             return [];

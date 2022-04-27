@@ -19,12 +19,9 @@ class Piece {
     return WHITE_PLAYER;
   }
 
-
   //get us a list named 'result', 
   //that goes inside a for loop that filter-out 
   //the moves that we can't make, because they are off-table
-
-
   getPossibleMoves(boardData) {
     let moves;
     if (this.type === PAWN) {

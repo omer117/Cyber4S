@@ -1,6 +1,6 @@
 table {
-  position: relative;
-  margin: auto;
+    position: relative;
+    margin: auto;
 }
 
 td {
@@ -8,13 +8,10 @@ td {
     height: 80px;
     width: 80px;
     background-color: tomato;
+    text-align: center;
 }
 
-img {
-margin: auto;
-    margin-left: auto;
-    margin-right: auto;
-}
+
 
 .container {
     margin: 100px 273.5px;
@@ -29,7 +26,7 @@ margin: auto;
     width: 80px;
     background-color: #E8C07D;
     padding: 0;
-      user-select: none;
+    user-select: none;
 
 }
 
@@ -39,7 +36,7 @@ margin: auto;
     width: 80px;
     background-color: #8E3200;
     padding: 0;
-      user-select: none;
+    user-select: none;
 
 }
 
@@ -53,25 +50,25 @@ table {
 }
 
 .winner-dialog {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 50;
-  border-radius: 10px;
-  width: max-content;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 50;
+    border-radius: 10px;
+    width: max-content;
 }
 
-.bs{
+.bs {
     width: 65px;
     height: 65px;
 }
 
-.selected{
+.selected {
     background-color: cornflowerblue;
 }
 
-.possible-move{
+.possible-move {
     background-color: aquamarine;
 }
