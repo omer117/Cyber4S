@@ -1,3 +1,8 @@
+table {
+  position: relative;
+  margin: auto;
+}
+
 td {
     padding: 0;
     height: 80px;
@@ -24,6 +29,8 @@ margin: auto;
     width: 80px;
     background-color: #E8C07D;
     padding: 0;
+      user-select: none;
+
 }
 
 
@@ -32,6 +39,8 @@ margin: auto;
     width: 80px;
     background-color: #8E3200;
     padding: 0;
+      user-select: none;
+
 }
 
 table {
@@ -41,6 +50,17 @@ table {
     border-color: #e3cfae;
     border: solid 1px;
 
+}
+
+.winner-dialog {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 50;
+  border-radius: 10px;
+  width: max-content;
 }
 
 .bs{

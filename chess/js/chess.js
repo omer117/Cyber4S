@@ -25,7 +25,6 @@ function tryUpdateSelectedPiece(row, col) {
       table.rows[i].cells[j].classList.remove('selected');
     }
   }
-
   // Show possible moves
   const piece = game.boardData.getPiece(row, col);
   if (piece !== undefined) {
@@ -41,11 +40,8 @@ function tryUpdateSelectedPiece(row, col) {
 }
 
 function onCellClick(row, col) {
-  // selectedPiece - The current selected piece (selected in previous click)
-  // row, col - the currently clicked cell - it may be empty, or have a piece.
   if (selectedPiece !== undefined && game.tryMove(selectedPiece, row, col)) {
     selectedPiece = undefined;
-    // Recreate whole board - this is not efficient, but doesn't affect user experience
     createChessBoard(game.boardData);
   } else {
     tryUpdateSelectedPiece(row, col);
@@ -56,6 +52,8 @@ function onCellClick(row, col) {
 function addImage(cell, player, name) {
   const image = document.createElement('img');
   image.src = 'pngs/' + player + '/' + name + '.png';
+  image.draggable = false;
+
   cell.appendChild(image);
 }
 
@@ -86,6 +84,15 @@ function createChessBoard(boardData) {
   for (let piece of boardData.pieces) {
     const cell = table.rows[piece.row].cells[piece.col];
     addImage(cell, piece.player, piece.type);
+  }
+
+    if (game.winner !== undefined) {
+    const winnerPopup = document.createElement('div');
+    // black -> B + lack -> Black
+    const winner = game.winner.charAt(0).toUpperCase() + game.winner.slice(1);
+    winnerPopup.textContent = winner + ' player wins!';
+    winnerPopup.classList.add('winner-dialog');
+    table.appendChild(winnerPopup)
   }
 }
 
